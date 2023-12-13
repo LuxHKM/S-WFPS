@@ -5,7 +5,6 @@ whoami /user | find /i "S-1-5-18" > nul 2>&1 || (
 	exit /b
 )
 
-:: Add print to context menu
 reg delete "HKCR\SystemFileAssociations\image\shell\print" /v "ProgrammaticAccessOnly" /f > nul 2>&1
 for %%a in (
     "batfile"
@@ -44,7 +43,6 @@ for /f "tokens=6 delims=[.] " %%a in ('ver') do (
 call setSvc.cmd Spooler 2
 call setSvc.cmd PrintWorkFlowUserSvc 3
 
-:: Hide Settings pages
 set "pageKey=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer"
 reg query "%pageKey%" /v "SettingsPageVisibility" > nul 2>&1
 if %ERRORLEVEL% == 0 call :enableSettingsPage

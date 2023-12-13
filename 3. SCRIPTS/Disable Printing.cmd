@@ -9,7 +9,7 @@ whoami /user | find /i "S-1-5-18" > nul 2>&1 || (
 )
 
 :main
-:: Remove print from context menu
+
 reg add "HKCR\SystemFileAssociations\image\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul
 for %%a in (
     "batfile"
@@ -48,7 +48,6 @@ for /f "tokens=6 delims=[.] " %%a in ('ver') do (
 call %windir%\AtlasModules\Scripts\setSvc.cmd Spooler 4
 call %windir%\AtlasModules\Scripts\setSvc.cmd PrintWorkFlowUserSvc 4
 
-:: Hide Settings page
 if not "%~1" == "/silent" (
     set "pageKey=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer"
     reg query "!pageKey!" /v "SettingsPageVisibility" > nul 2>&1
