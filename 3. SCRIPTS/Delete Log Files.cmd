@@ -1,5 +1,5 @@
 @echo off
 cd/
 @echo
-del *.log /a /s /q /f
+del *.log /a /s /q /f REM IF YOU HAVE IMPORTANT LOG FILES LIKE FOR EXAMPLE FROM A MINECRAFT SERVER THEY WILL BE DELETED.
 pause
